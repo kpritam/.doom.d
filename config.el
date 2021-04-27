@@ -65,11 +65,6 @@
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 (set-frame-parameter (selected-frame) 'alpha '(95 . 95))
 
-(if (equal "Battery status not available"
-           (battery))
-    (display-battery-mode 1)                        ; On laptops it's nice to know how much power you have
-  (setq password-cache-expiry nil))               ; I can trust my desktops ... can't I? (no battery = desktop)
-
 (setq doom-fallback-buffer-name "► Doom"
       +doom-dashboard-name "► Doom")
 
@@ -93,6 +88,22 @@
   :ensure t
   :config (treemacs-icons-dired-mode))
 
-(setq treemacs-load-theme "doom-colors")
+(setq! doom-themes-treemacs-theme "doom-colors")
+(doom-themes-treemacs-config)
+
+;; Modeline
+(setq! doom-modeline-icon (display-graphic-p)
+       doom-modeline-major-mode-icon t
+       doom-modeline-lsp t
+       doom-modeline-buffer-file-name-style 'truncate-with-project
+       doom-modeline-buffer-encoding nil)
+;; Show battery usage
+(ignore-errors (display-battery-mode))
+;; Disable buffer size
+(size-indication-mode nil)
 
 (use-package lsp-metals)
+(after! lsp
+  (setq company-minimum-prefix-length   1
+        company-idle-delay              0.0
+        lsp-lens-enable            t))
