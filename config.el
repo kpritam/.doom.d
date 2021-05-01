@@ -23,7 +23,8 @@
 ;; You will most likely need to adjust this font size for your system!
 
 (setq doom-font (font-spec :family "FiraCode Nerd Font Mono" :size 16 :weight 'regular)
-      doom-variable-pitch-font (font-spec :family "FiraCode Nerd Font Mono") ; inherits `doom-font''s :size
+      ;; doom-variable-pitch-font (font-spec :family "FiraCode Nerd Font Mono") ; inherits `doom-font''s :size
+      doom-variable-pitch-font (font-spec :family "Ubuntu" :size 16)
       doom-unicode-font (font-spec :family "FiraCode Nerd Font Mono" :size 20)
       doom-big-font (font-spec :family "FiraCode Nerd Font Mono" :size 20))
 (setq-default line-spacing 0.2)
@@ -63,7 +64,7 @@
 
 ;; Set frame transparency
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
-(set-frame-parameter (selected-frame) 'alpha '(95 . 95))
+;; (set-frame-parameter (selected-frame) 'alpha '(95 . 95))
 
 (setq doom-fallback-buffer-name "► Doom"
       +doom-dashboard-name "► Doom")
@@ -82,11 +83,6 @@
 
 (after! projectile
   (setq projectile-project-search-path '("~/projects/tmtsoftware/" "~/projects/kpritam")))
-
-(use-package treemacs-icons-dired
-  :after treemacs dired
-  :ensure t
-  :config (treemacs-icons-dired-mode))
 
 (setq! doom-themes-treemacs-theme "doom-colors")
 (doom-themes-treemacs-config)
@@ -107,3 +103,11 @@
   (setq company-minimum-prefix-length   1
         company-idle-delay              0.0
         lsp-lens-enable            t))
+
+(map! :leader
+      (:prefix ("-" . "open file")
+       :desc "Edit agenda file" "a" #'(lambda () (interactive) (find-file "~/Org/agenda.org"))
+       :desc "Edit todo file" "t" #'(lambda () (interactive) (find-file "~/Org/todo.org"))
+       :desc "Edit doom config.el" "c" #'(lambda () (interactive) (find-file "~/.doom.d/config.el"))
+       :desc "Edit doom init.el" "i" #'(lambda () (interactive) (find-file "~/.doom.d/init.el"))
+       :desc "Edit doom packages.el" "p" #'(lambda () (interactive) (find-file "~/.doom.d/packages.el"))))
