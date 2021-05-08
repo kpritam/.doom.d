@@ -24,7 +24,7 @@
 
 (setq doom-font (font-spec :family "FiraCode Nerd Font Mono" :size 16 :weight 'regular)
       ;; doom-variable-pitch-font (font-spec :family "FiraCode Nerd Font Mono") ; inherits `doom-font''s :size
-      doom-variable-pitch-font (font-spec :family "Ubuntu" :size 16)
+      doom-variable-pitch-font (font-spec :family "Fantasque Sans Mono" :size 17)
       doom-unicode-font (font-spec :family "FiraCode Nerd Font Mono" :size 20)
       doom-big-font (font-spec :family "FiraCode Nerd Font Mono" :size 20))
 (setq-default line-spacing 0.2)
@@ -111,3 +111,10 @@
        :desc "Edit doom config.el" "c" #'(lambda () (interactive) (find-file "~/.doom.d/config.el"))
        :desc "Edit doom init.el" "i" #'(lambda () (interactive) (find-file "~/.doom.d/init.el"))
        :desc "Edit doom packages.el" "p" #'(lambda () (interactive) (find-file "~/.doom.d/packages.el"))))
+
+ ;; expand-region
+ (map! :leader
+      :desc "Expand region" "<up>"  #'er/expand-region
+      :desc "Contract region" "<down>"  #'er/contract-region)
+
+(setq ispell-dictionary "en")

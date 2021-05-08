@@ -63,6 +63,7 @@
 (require 'evil)
 (evil-mode 1)
 
+(package! emojify)
 (package! evil-tutor)
 (package! prettier-js)
 (package! treemacs-icons-dired)
