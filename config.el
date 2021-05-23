@@ -21,12 +21,13 @@
 ;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
 ;; You will most likely need to adjust this font size for your system!
+(setq doom-font                (font-spec :family "MonoLisa"            :size 16.0)
+      doom-serif-font          (font-spec :family "Iosevka Curly Slab"  :size 16.0)
+      doom-variable-pitch-font (font-spec :family "Iosevka Aile"        :size 17.0)
+      doom-big-font            (font-spec :family "MonoLisa"            :size 20.0 :style 'Medium)
+      doom-unicode-font        doom-font)
 
-(setq doom-font (font-spec :family "FiraCode Nerd Font Mono" :size 16 :weight 'regular)
-      ;; doom-variable-pitch-font (font-spec :family "FiraCode Nerd Font Mono") ; inherits `doom-font''s :size
-      doom-variable-pitch-font (font-spec :family "Fantasque Sans Mono" :size 17)
-      doom-unicode-font (font-spec :family "FiraCode Nerd Font Mono" :size 20)
-      doom-big-font (font-spec :family "FiraCode Nerd Font Mono" :size 20))
+
 (setq-default line-spacing 0.2)
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
