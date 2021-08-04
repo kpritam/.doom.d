@@ -21,12 +21,11 @@
 ;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
 ;; You will most likely need to adjust this font size for your system!
-(setq doom-font                (font-spec :family "MonoLisa"            :size 16.0)
-      doom-serif-font          (font-spec :family "Iosevka Curly Slab"  :size 16.0)
-      doom-variable-pitch-font (font-spec :family "Iosevka Aile"        :size 17.0)
-      doom-big-font            (font-spec :family "MonoLisa"            :size 20.0 :style 'Medium)
+(setq doom-font                (font-spec :family "MonoLisa"            :size 16)
+      doom-serif-font          (font-spec :family "Iosevka Curly Slab"  :size 16)
+      doom-variable-pitch-font (font-spec :family "Iosevka Aile"        :size 17)
+      doom-big-font            (font-spec :family "MonoLisa"            :size 20)
       doom-unicode-font        doom-font)
-
 
 (setq-default line-spacing 0.2)
 
@@ -38,6 +37,9 @@
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
+
+(setq org-ellipsis " ▼ ")
+(custom-set-faces '(org-ellipsis ((t (:foreground "burlywood3" :underline nil)))))
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -64,7 +66,7 @@
 (setq which-key-idle-delay 0.01)
 
 ;; Set frame transparency
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
+;; (add-to-list 'default-frame-alist '(fullscreen . maximized))
 ;; (set-frame-parameter (selected-frame) 'alpha '(95 . 95))
 
 (setq doom-fallback-buffer-name "► Doom"
@@ -119,3 +121,16 @@
       :desc "Contract region" "<down>"  #'er/contract-region)
 
 (setq ispell-dictionary "en")
+
+(setq fancy-splash-image "~/.doom.d/splash/emacs_small.png")
+
+(setq confirm-kill-emacs nil)
+(blink-cursor-mode 1)
+
+(setq org-latex-pdf-process '("latexmk -f -pdf -%latex -shell-escape -interaction=nonstopmode -output-directory=%o %f"))
+(setq TeX-save-query nil
+      TeX-show-compilation t
+      TeX-command-extra-options "-shell-escape")
+;; org-latex-compilers = ("pdflatex" "xelatex" "lualatex"), which are the possible values for %latex
+(setq org-latex-pdf-process '("latexmk -f -pdf -%latex -shell-escape -interaction=nonstopmode -output-directory=%o %f"))
+(setq +latex-viewers '(pdf-tools evince zathura okular skim sumatrapdf))

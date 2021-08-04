@@ -23,16 +23,17 @@
        (company +childframe +auto)           ; the ultimate code completion backend
        ;; helm              ; the *other* search engine for love and life
        ;; ido               ; the other *other* search engine...
-       (ivy               ; a search engine for love and life
-	+fuzzy
-	+prescient
-        +icons)
+       ;; (ivy              ; a search engine for love and life
+       ;;  +fuzzy
+       ;;  +prescient
+       ;;  +icons)
+       (vertico +icons)     ; the search engine of the future
 
        :ui
        ;;deft              ; notational velocity for Emacs
        doom              ; what makes DOOM look the way it does
        doom-dashboard    ; a nifty splash screen for Emacs
-       doom-quit         ; DOOM quit-message prompts when you quit Emacs
+       ;; doom-quit         ; DOOM quit-message prompts when you quit Emacs
        (emoji +unicode)  ; 🙂
        ;; fill-column       ; a `fill-column' indicator
        hl-todo           ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
@@ -100,12 +101,12 @@
        magit             ; a git porcelain for Emacs
        ;;make              ; run make tasks from Emacs
        ;;pass              ; password manager for nerds
-       ;;pdf               ; pdf enhancements
+       pdf               ; pdf enhancements
        ;;prodigy           ; FIXME managing external services & code builders
        ;;rgb               ; creating color strings
        ;;taskrunner        ; taskrunner for all your projects
        ;;terraform         ; infrastructure as code
-       tmux              ; an API for interacting with tmux
+       ;; tmux              ; an API for interacting with tmux
        ;;upload            ; map local to remote projects via ssh/ftp
 
        :os
@@ -142,7 +143,7 @@
        (javascript +lsp)        ; all(hope(abandon(ye(who(enter(here))))))
        ;;julia             ; a better, faster MATLAB
        (kotlin +lsp)            ; a better, slicker Java(Script)
-       ;;latex             ; writing papers in Emacs has never been so fun
+       (latex +latexmk)             ; writing papers in Emacs has never been so fun
        ;;lean              ; for folks with too much to prove
        ;;ledger            ; be audit you can be
        lua               ; one-based indices? one-based indices
@@ -189,3 +190,6 @@
        :config
        ;;literate
        (default +bindings +smartparens))
+(setenv "PATH" (concat "/Library/TeX/texbin:"
+                       (getenv "PATH")))
+(add-to-list 'exec-path "/Library/TeX/texbin")
